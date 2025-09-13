@@ -2,4 +2,132 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.container{max-width:1200px;margin-inline:auto;padding-inline:1rem}
+
+/* Base styles */
+@layer base {
+  html {
+    @apply antialiased text-white bg-netflix-black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-netflix-gray-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-netflix-gray-medium rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-netflix-gray-light;
+  }
+}
+
+/* Componentes comunes */
+@layer components {
+  .container {
+    @apply max-w-[1400px] mx-auto px-4;
+  }
+
+  /* Botones */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply btn bg-netflix-red hover:bg-[#f40612] text-white;
+  }
+
+  .btn-secondary {
+    @apply btn bg-netflix-gray-medium hover:bg-netflix-gray-light text-white;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-white/20 hover:border-white text-white;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-4 py-3 bg-netflix-gray-dark border border-netflix-gray-medium rounded-lg 
+           focus:ring-2 focus:ring-netflix-red focus:border-transparent 
+           placeholder-netflix-gray-light transition-colors;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-netflix-gray-dark rounded-lg overflow-hidden transition-transform hover:scale-105;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-netflix-red text-white;
+  }
+
+  .badge-secondary {
+    @apply badge bg-netflix-gray-medium text-white;
+  }
+}
+
+/* Utilidades personalizadas */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  }
+
+  .backdrop-gradient {
+    background: linear-gradient(to top, 
+      rgba(20,20,20,1) 0%,
+      rgba(20,20,20,0.7) 50%,
+      rgba(20,20,20,0) 100%
+    );
+  }
+
+  /* Scroll horizontal sin scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animaciones */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
